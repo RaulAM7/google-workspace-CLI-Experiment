@@ -53,9 +53,12 @@ Se usa la misma sintaxis que las APIs nativas de Google (Drive search, Gmail sea
 
 ## Fricciones encontradas
 
-1. **Sheets**: el flag es `--spreadsheet`, no `--spreadsheet-id` (error de naming inconsistente).
-2. **Docs**: el output de `documents get` es el modelo de datos interno, no texto plano. Necesita parseo.
-3. **Gmail messages list**: devuelve solo ids, necesita un `get` posterior para contenido completo.
+1. **IDs obligatorios**: `gws` no acepta URLs ni nombres de fichero, solo IDs. Hay que extraer el ID manualmente de la URL (entre `/d/` y `/edit`). Muy incómodo para uso manual. Se mitiga con agentes o encadenando búsqueda Drive + jq.
+2. **Docs API solo para docs nativos**: ficheros importados (Word, PDF subidos a Drive) devuelven 404. Solo funciona con Google Docs nativos.
+3. **Sheets**: el flag es `--spreadsheet`, no `--spreadsheet-id` (naming inconsistente).
+4. **Docs**: el output de `documents get` es el modelo de datos interno, no texto plano. Necesita parseo.
+5. **Gmail messages list**: devuelve solo ids, necesita un `get` posterior para contenido completo.
+6. **Uso manual es incómodo**: sin un agente intermediario, la experiencia tiene mucha fricción (copiar IDs, construir JSON para params, etc.). La herramienta brilla más como capa para agentes que como CLI para humanos.
 
 ---
 
