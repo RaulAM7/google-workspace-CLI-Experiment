@@ -1,0 +1,41 @@
+# Credenciales y tokens — NUNCA versionar
+*.enc
+.encryption_key
+token_cache.json
+client_secret.json
+credentials.json
+*.pem
+*.key
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Directorios de config gws con credenciales
+# (están en ~/.config/gws*, no en el repo, pero por si acaso)
+gws_config/
+**/credentials/
+
+# Secretos y tokens en cualquier formato
+*_token.json
+*_secret.json
+*_key.json
+service_account*.json
+
+# OS y editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/settings.json
+
+# Logs que podrían contener tokens
+*.log
+logs/
+
+# Archivos temporales de scratch
+05_scratch/*.tmp
+05_scratch/*.log
